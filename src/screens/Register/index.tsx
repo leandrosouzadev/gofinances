@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     Modal,
     TouchableWithoutFeedback,
@@ -12,6 +12,7 @@ import uuid from 'react-native-uuid';
 
 import { useForm } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
 import { InputForm } from '../../components/Form/InputForm';
 import { Button } from '../../components/Form/Button';
@@ -19,6 +20,8 @@ import { TransactionTypeButton } from '../../components/Form/TransactionTypeButt
 import { CategorySelectButton } from '../../components/Form/CatagorySelectButton';
 
 import { CategorySelect } from '../CategorySelect';
+
+import { RootBottomTabParamList } from '../../routes/app.routes';
 
 import {
     Container,
@@ -33,6 +36,8 @@ interface FormData {
     name: string;
     amount: string;
 }
+
+type dashboardScreepProps = BottomTabNavigationProp<RootBottomTabParamList, 'Dashboard'>;
 
 const schema = Yup.object().shape({
     name: Yup
@@ -56,7 +61,7 @@ export function Register() {
         name: 'Categoria',        
     });
 
-    const navigation = useNavigation();
+    const navigation = useNavigation<dashboardScreepProps>();
 
     const {
         control,
@@ -113,7 +118,7 @@ export function Register() {
                 name: 'Categoria'
             });
 
-            navigation.navigate('Listagem' as never);
+            navigation.navigate('Dashboard');
         } catch (error) {
             console.log(error);
             Alert.alert("Não foi possivel salvar");

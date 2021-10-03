@@ -2,12 +2,18 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
-import { createBottomTabNavigator, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Dashboard } from '../screens/Dashboard';
 import { Register } from '../screens/Register';
 
-const { Navigator, Screen } = createBottomTabNavigator();
+export type RootBottomTabParamList = {
+    Dashboard: undefined;
+    Register: undefined;
+    Summary: undefined;
+}
+
+const { Navigator, Screen } = createBottomTabNavigator<RootBottomTabParamList>();
 
 export function AppRoutes() {
     const theme = useTheme();
@@ -25,9 +31,8 @@ export function AppRoutes() {
                 }
             }}
         >
-            <Screen                 
-                key="Listagem"
-                name="Listagem"                
+            <Screen                                 
+                name="Dashboard"                
                 component={Dashboard}
                 options={{
                     tabBarIcon: (({ size, color }) =>(
@@ -41,7 +46,7 @@ export function AppRoutes() {
             />
 
             <Screen 
-                name="Cadastrar"
+                name="Register"
                 component={Register}
                 options={{
                     tabBarIcon: (({ size, color }) =>(
@@ -55,7 +60,7 @@ export function AppRoutes() {
             />
 
             <Screen 
-                name="Resumo"
+                name="Summary"
                 component={Register}
                 options={{
                     tabBarIcon: (({ size, color }) =>(
