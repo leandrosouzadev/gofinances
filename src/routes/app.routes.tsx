@@ -8,9 +8,9 @@ import { Dashboard } from '../screens/Dashboard';
 import { Register } from '../screens/Register';
 
 export type RootBottomTabParamList = {
-    Dashboard: undefined;
-    Register: undefined;
-    Summary: undefined;
+    Listagem: undefined;
+    Cadastrar: undefined;
+    Resumo: undefined;
 }
 
 const { Navigator, Screen } = createBottomTabNavigator<RootBottomTabParamList>();
@@ -32,7 +32,7 @@ export function AppRoutes() {
             }}
         >
             <Screen                                 
-                name="Dashboard"                
+                name="Listagem"                
                 component={Dashboard}
                 options={{
                     tabBarIcon: (({ size, color }) =>(
@@ -46,7 +46,7 @@ export function AppRoutes() {
             />
 
             <Screen 
-                name="Register"
+                name="Cadastrar"
                 component={Register}
                 options={{
                     tabBarIcon: (({ size, color }) =>(
@@ -60,7 +60,7 @@ export function AppRoutes() {
             />
 
             <Screen 
-                name="Summary"
+                name="Resumo"
                 component={Register}
                 options={{
                     tabBarIcon: (({ size, color }) =>(

@@ -37,7 +37,7 @@ interface FormData {
     amount: string;
 }
 
-type dashboardScreepProps = BottomTabNavigationProp<RootBottomTabParamList, 'Dashboard'>;
+type dashboardScreepProps = BottomTabNavigationProp<RootBottomTabParamList, 'Listagem'>;
 
 const schema = Yup.object().shape({
     name: Yup
@@ -53,8 +53,6 @@ const schema = Yup.object().shape({
 export function Register() {    
     const [transactionType, setTransactionType] = useState('');
     const [categoryModalOpen, setCategoryModalOpen] = useState(false);
-
-    const dataKey = '@gofinances:transactions';
 
     const [category, setCategory] = useState({
         key: 'category',
@@ -100,7 +98,9 @@ export function Register() {
             date: new Date()
         }
 
-        try {         
+        try {
+            const dataKey = '@gofinances:transactions';
+                     
             const data = await AsyncStorage.getItem(dataKey);
             const currentData = data ? JSON.parse(data) : [];
 
@@ -118,7 +118,7 @@ export function Register() {
                 name: 'Categoria'
             });
 
-            navigation.navigate('Dashboard');
+            navigation.navigate('Listagem');
         } catch (error) {
             console.log(error);
             Alert.alert("Não foi possivel salvar");
