@@ -31,7 +31,7 @@ export function Dashboard() {
     async function loadTransactions() {
         const dataKey = '@gofinances:transactions';        
         const response = await AsyncStorage.getItem(dataKey);
-        const transactions = response ? JSON.parse(response) : [];
+        const transactions = response ? JSON.parse(response) : [];        
 
         const transactionsFormatted: DatalistProps[] = transactions
         .map((item: DatalistProps) => {
@@ -49,16 +49,15 @@ export function Dashboard() {
 
             return {
                 id: item.id,
-                title: item.name,
+                name: item.name,
                 amount,
                 type: item.type,
                 category: item.category,
                 date
             }
         });        
-
-        console.log(transactionsFormatted);
-        setData(transactions);
+        
+        setData(transactionsFormatted);
     }
 
     useEffect(() => {
