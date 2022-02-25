@@ -17,6 +17,7 @@
     "expo": "^42.0.0",
     "expo-app-loading": "^1.1.2",
     "expo-font": "~9.2.1",
+    "expo-google-app-auth": "~8.2.5",
     "expo-splash-screen": "~0.11.2",
     "expo-updates": "~0.8.2",
     "intl": "^1.2.5",
